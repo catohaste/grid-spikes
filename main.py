@@ -1,6 +1,10 @@
 import matplotlib.pyplot as plt
+import matplotlib
 import os
 import pandas as pd
+import numpy as np
+
+import skimage.io as skio
 
 from image_data_as_class import images
 
@@ -11,6 +15,9 @@ results_folder = "/Users/clhastings/Documents/Drive/UCL/Stern/calcium/image_anal
 comparison_name = 'testing'
 comparison_images = [images[0],images[1]]
 image_names_for_plot = ['E1 ant', 'E1 pos']
+
+# define grid
+grid_square_width = 16
 
 for image in comparison_images:
     
@@ -25,15 +32,22 @@ for image in comparison_images:
     except: # no timeline data, so create timeline
         print("No timeline data, so create timeline")
         try: # load image
-            I = plt.imread(data_folder + image.name + "/" + image.name + image.suffix)
+            
+            # imstack = skio.imread(data_folder + image.name + "/" + image.name + image.suffix, plugin="tifffile")
+            imstack = skio.imread(data_folder + image.name + "/" + image.prefix + " brightfield" + image.suffix, plugin="tifffile")
+            print(type(imstack), imstack.shape)
+            
+            # check image is square
+            if imstack.shape[1] != imstack.shape[2]:
+                print("Image not square", image.prefix)
+            
+            # check image dimensions are divisible by grid square size
+            if imstack.shape[1] % grid_square_width != 0:
+                print("Image width not divisible by grid width", image.prefix)
             
         except Exception as e:
             print("Couldn't read image data.")
             print(e)
-    
-
-
-# define grid
 
 # extract timeline data
 

@@ -1,4 +1,4 @@
-class Image:
+class Image_Cato:
     def __init__(self, image_prefix, embryo_position, sliceN, sub_video_lengths):
         self.prefix = image_prefix
         self.name = image_prefix +  " calcium"
@@ -12,35 +12,42 @@ class Image:
 """ IMAGE SPECIFIC DATA """
 images = []
 
-images.append(Image('2019_07_18 - E1 ant','anterior', 824, [623,201])) # 0
-images.append(Image("2019_07_18 - E1 pos",'posterior', 821, [542,279])) # 1
-images.append(Image("2019_07_18 - E2 ant",'anterior', 805, [805])) # 2
-images.append(Image("2019_07_18 - E2 pos",'posterior', 802, [802])) # 3
-images.append(Image("2019_07_18 - E3 ant",'anterior', 808, [808])) # 4
-images.append(Image("2019_07_18 - E3 pos",'posterior', 801, [801])) # 5
+images.append(Image_Cato('2019_07_18 - E1 ant','anterior', 824, [623,201])) # 0
+images.append(Image_Cato("2019_07_18 - E1 pos",'posterior', 821, [542,279])) # 1
+images.append(Image_Cato("2019_07_18 - E2 ant",'anterior', 805, [805])) # 2
+images.append(Image_Cato("2019_07_18 - E2 pos",'posterior', 802, [802])) # 3
+images.append(Image_Cato("2019_07_18 - E3 ant",'anterior', 808, [808])) # 4
+images.append(Image_Cato("2019_07_18 - E3 pos",'posterior', 801, [801])) # 5
 
-images.append(Image("2019_07_17 DM whole E1",'anterior', 569, [82, 198, 289])) # 6
-images.append(Image("2019_07_17 DM whole E2",'anterior', 601, [601])) # 7
-images.append(Image("2019_07_17 DM whole E3",'anterior', 556, [556])) # 8
+images.append(Image_Cato("2019_07_17 DM whole E1",'anterior', 569, [82, 198, 289])) # 6
+images.append(Image_Cato("2019_07_17 DM whole E2",'anterior', 601, [601])) # 7
+images.append(Image_Cato("2019_07_17 DM whole E3",'anterior', 556, [556])) # 8
 
-images.append(Image("2019_07_17 DM bead both E1",'anterior', 1009, [109, 155, 278, 467])) # 9
-images.append(Image("2019_07_17 DM bead both E2",'anterior', 658, [658])) # 10
+images.append(Image_Cato("2019_07_17 DM bead both E1",'anterior', 1009, [109, 155, 278, 467])) # 9
+images.append(Image_Cato("2019_07_17 DM bead both E2",'anterior', 658, [658])) # 10
 
-images.append(Image('2019_07_18 - E1 hh2','posterior', 402, [402])) # 11
+images.append(Image_Cato('2019_07_18 - E1 hh2','posterior', 402, [402])) # 11
 
-images.append(Image('2019_07_17 DM bead sep E1 DM','anterior', 185, [101, 84])) # 12
-images.append(Image('2019_07_17 DM bead sep E1 control','anterior', 164, [164])) # 13
+images.append(Image_Cato('2019_07_17 DM bead sep E1 DM','anterior', 185, [101, 84])) # 12
+images.append(Image_Cato('2019_07_17 DM bead sep E1 control','anterior', 164, [164])) # 13
 
-images.append(Image('2020_01_14 DM bead sep E1 control','anterior', 400, [400])) # 14
-images.append(Image('2020_01_14 DM bead sep E1 DM','anterior', 446, [446])) # 15
-images.append(Image('2020_01_14 DM bead sep E3 control','anterior', 400, [400])) # 16
-images.append(Image('2020_01_14 DM bead sep E3 DM','anterior', 400, [400])) # 17
-images.append(Image('2020_01_14 DM bead sep E5 control','anterior', 415, [214,201])) # 18
-images.append(Image('2020_01_14 DM bead sep E5 DM','anterior', 401, [401])) # 19
-images.append(Image('2020_01_14 DM bead sep E7 control','anterior', 434, [434])) # 20
-images.append(Image('2020_01_14 DM bead sep E7 DM','anterior', 435, [435])) # 21
-images.append(Image('2020_01_14 DM bead sep E8 control','anterior', 404, [404])) # 22
-images.append(Image('2020_01_14 DM bead sep E8 DM','anterior', 400, [400])) # 23
+images.append(Image_Cato('2020_01_14 DM bead sep E1 control','anterior', 400, [400])) # 14
+images.append(Image_Cato('2020_01_14 DM bead sep E1 DM','anterior', 446, [446])) # 15
+images.append(Image_Cato('2020_01_14 DM bead sep E3 control','anterior', 400, [400])) # 16
+images.append(Image_Cato('2020_01_14 DM bead sep E3 DM','anterior', 400, [400])) # 17
+images.append(Image_Cato('2020_01_14 DM bead sep E5 control','anterior', 415, [214,201])) # 18
+images.append(Image_Cato('2020_01_14 DM bead sep E5 DM','anterior', 401, [401])) # 19
+images.append(Image_Cato('2020_01_14 DM bead sep E7 control','anterior', 434, [434])) # 20
+images.append(Image_Cato('2020_01_14 DM bead sep E7 DM','anterior', 435, [435])) # 21
+images.append(Image_Cato('2020_01_14 DM bead sep E8 control','anterior', 404, [404])) # 22
+images.append(Image_Cato('2020_01_14 DM bead sep E8 DM','anterior', 400, [400])) # 23
+
+###################################################################
+""" ADD ROIs (embryo, AP, MZ, AO, bead) """
+class ROI_Cato:
+    def __init__(self, raw_coords, roi_shape_str):
+        self.coords = raw_coords # as coords are inputted in imageJ
+        self.shape = roi_shape_str # "polygon", "circle", "rectangle"
 
 ###################################################################
 """ EXPERIMENT COMPARISONS """
