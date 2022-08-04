@@ -8,6 +8,8 @@ import skimage.io as skio
 
 from image_data_as_class import images
 
+from plot import *
+
 root_folder = "/Users/clhastings/Documents/Drive/UCL/Stern/calcium/image_analysis/"
 data_folder = "/Users/clhastings/Documents/Drive/UCL/Stern/calcium/image_analysis/ImageJ/"
 results_folder = "/Users/clhastings/Documents/Drive/UCL/Stern/calcium/image_analysis/grid_spikes_results/"
@@ -24,14 +26,14 @@ grid["square_y_size"] = 16
 
 for image in comparison_images:
     
-    im_folder = results_folder + "image_data/" + image.name
+    im_results_folder = results_folder + "image_data/" + image.name + '/'
     try: # does the results folder exist
         os.mkdir(im_folder)
     except: # results folder already exists
         print("Results folder already exists")
     
     try: # load timeline data
-        grid_spikes_results = pd.read_csv(im_folder + "cell_grid_timeline.csv")
+        grid_spikes_results = pd.read_csv(im_results_folder + "cell_grid_timeline.csv")
     except: # no timeline data, so create timeline
         print("No timeline data, so create timeline")
         try: # load image
@@ -53,13 +55,13 @@ for image in comparison_images:
             
             imageJ_df = pd.read_csv(root_folder + "results/" + image.name + "/cell_grid_timeline.csv")
             compare_dataframe_against_imageJ(imstack, grid, imageJ_df)
-                
 
-            
         except Exception as e:
             print("Couldn't read image data.")
             print(e)
+            
+    # plot_brightfield_with_grid(data_folder, im_results_folder, image, grid)
 
 # extract timeline data
 
-# extract peak datao
+# extract peak data
